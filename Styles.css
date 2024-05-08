@@ -3,3 +3,7 @@ body {
     border: 10px solid black;
     border-radius: 10px;
 }  
+
+.navbar {
+    text-align: center; /*centre's the nav bar*/
+}
