@@ -1,5 +1,19 @@
 body {
-    background-color: #b6afaf;
-    border: 10px solid black;
-    border-radius: 10px;
-}  
+    background-color:#ADA5A0;
+    padding: 0px; /* Sets the default to 0 */
+    margin: 0px; /* Sets the default to 0 */
+}
+
+nav {
+    margin-top: 70px; /* brings the nav bar  down from top */
+    text-align: center;
+    background-color: #ccc; /* sets the colour of the nav bar */
+    padding-top: 70px;
+    padding-bottom: 70px;
+    border-top: 8px solid black;
+    border-bottom: 8px solid black;
+}
+
+nav a {
+    padding: 80px;
+}
