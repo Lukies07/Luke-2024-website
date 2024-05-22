@@ -1,5 +1,5 @@
 body {
-    background-color:#ADA5A0;
+    background-color:#bbb2ac;
     padding: 0px; /* Sets the default to 0 */
     margin: 0px; /* Sets the default to 0 */
 }
@@ -7,7 +7,7 @@ body {
 nav {
     margin-top: 70px; /* brings the nav bar  down from top */
     text-align: center;
-    background-color: #ccc; /* sets the colour of the nav bar */
+    background-color: #707070; /* sets the colour of the nav bar */
     padding-top: 70px;
     padding-bottom: 70px;
     border-top: 8px solid black;
@@ -15,5 +15,16 @@ nav {
 }
 
 nav a {
-    padding: 80px;
+    font-size: 30px;
+    padding: 10px;
+    text-decoration: none;
+    font-weight: bold;
+    font-family: 'Aptos Black', sans-serif;
+    color: black;
+
+    border: 10px solid black; /* Border style */
+    
+    display: inline-block; /* Ensures that the box doesn't stretch to full width */
+    background-color: lightgreen; /* Background color */
+    border-radius: 10px;
 }
