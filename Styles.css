@@ -37,6 +37,7 @@ nav a {
     overflow: hidden;
 }
 
+/* CSS for the hover state */
 nav a::after { /* activates when i hover the nav a element */
     content: "";
     position: absolute;
