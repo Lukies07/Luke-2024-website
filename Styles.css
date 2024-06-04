@@ -24,7 +24,7 @@ nav a {
     font-weight: bold;
     font-family: 'Aptos Black', sans-serif;
     color: black;
-    z-index: 1; /* Puts the text infront for the slider */
+    z-index: 1; /* Puts the text in front for the slider */
 
     border: 5px solid black;
     margin-left: 60px;
@@ -38,7 +38,7 @@ nav a {
 }
 
 /* CSS for the hover state */
-nav a::after { /* activates when i hover the nav a element */
+nav a::after { /* activates when I hover the nav a element */
     content: "";
     position: absolute;
     top: -100%;
