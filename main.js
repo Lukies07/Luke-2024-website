@@ -8,6 +8,10 @@ let cannon = {
     height: 100,
 };
 
+let cannonMouse_angle = undefined
+let mouseX = undefined
+let mouseY = undefined
+
 function resizeCanvas() {
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
@@ -16,20 +20,24 @@ function resizeCanvas() {
     drawCannon(); // Redraw the cannon after resizing
 }
 
-// Initial resize
-resizeCanvas();
+resizeCanvas(); // Resize when website is opened
 
 window.addEventListener('resize', resizeCanvas);
 
 canvas.addEventListener('mousemove', function(event) {
-    console.log('Mouse coordinates on page:', event.clientX, event.clientY);
+    mouseX = event.clientX - canvas.width / 2; // adjust mouseX
+    mouseY = event.clientY - canvas.height / 2; // adjust mouseY
 });
 
 function drawCannon() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     ctx.fillStyle = 'blue';
-    ctx.fillRect(cannon.x - cannon.width / 2, cannon.y - cannon.height / 2, cannon.width, cannon.height);
-}
+    ctx.fillRect(canvas.width / 2 - cannon.width / 2, canvas.height / 2 - cannon.height / 2, cannon.width, cannon.height);
+
+    console.log("Angle:", cannonMouse_angle);   
+    console.log("mouseX", mouseX);
+    console.log("mouseY", mouseY);
+}   
 
 function loop() {
     drawCannon();
