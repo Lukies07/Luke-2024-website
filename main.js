@@ -1,47 +1,49 @@
+window.onload = function() {
+
 const canvas = document.getElementById('Canvas');
 const ctx = canvas.getContext('2d');
 
+// Function to update the size of the canvas
+function updateCanvasSize() {
+    const nav = document.querySelector('nav');
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight - nav.offsetHeight;
+}
+
+// Call this function initially to set the size of the canvas
+updateCanvasSize();
 let cannon = {
-    x: canvas.width / 2,
-    y: canvas.height / 2,
+    x: 0,
+    y: 0,
     width: 25,
     height: 100,
 };
 
-let cannonMouse_angle = undefined
-let mouseX = undefined
-let mouseY = undefined
-
-function resizeCanvas() {
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
-    cannon.x = canvas.width / 2;
-    cannon.y = canvas.height / 2;
-    drawCannon(); // Redraw the cannon after resizing
-}
-
-resizeCanvas(); // Resize when website is opened
-
-window.addEventListener('resize', resizeCanvas);
-
-canvas.addEventListener('mousemove', function(event) {
-    mouseX = event.clientX - canvas.width / 2; // adjust mouseX
-    mouseY = event.clientY - canvas.height / 2; // adjust mouseY
-});
+let mouseX = undefined;
+let mouseY = undefined;
 
 function drawCannon() {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    ctx.clearRect(0, 0, canvas.width, canvas.height); // Clear the canvas
     ctx.fillStyle = 'blue';
-    ctx.fillRect(canvas.width / 2 - cannon.width / 2, canvas.height / 2 - cannon.height / 2, cannon.width, cannon.height);
-
-    console.log("Angle:", cannonMouse_angle);   
-    console.log("mouseX", mouseX);
-    console.log("mouseY", mouseY);
-}   
+    ctx.fillRect(cannon.x, cannon.y, cannon.width, cannon.height);
+}
 
 function loop() {
     drawCannon();
-    requestAnimationFrame(loop);
+    requestAnimationFrame(loop); // Use requestAnimationFrame for better performance
 }
 
+function logMouseCoordinates(event) {
+    let rect = canvas.getBoundingClientRect(); // Get the position of the canvas
+    let navHeight = document.querySelector('nav').offsetHeight; // Get the height of the nav element
+    mouseX = event.clientX - rect.left; // Adjust the x-coordinate
+    mouseY = canvas.height - (event.clientY - rect.top - navHeight); // Adjust the y-coordinate
+    console.log(`Mouse X: ${mouseX}, Mouse Y: ${mouseY}`); // Log mouse coordinates
+}
+
+
+window.addEventListener('mousemove', logMouseCoordinates);
+window.addEventListener('resize', updateCanvasSize); // Update the size of the canvas when the window size changes
+
 loop();
+}
