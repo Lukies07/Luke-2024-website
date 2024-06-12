@@ -16,9 +16,10 @@ function updateCanvasSize() {
     const navHeight = nav.offsetHeight; // Get the actual height of the nav
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight - navHeight; // Subtract the nav height from the window's innerHeight
+    cannon.x = window.innerWidth/2 - cannon.width/2;
+    cannon.y = 0 + cannon.height;
+    console.log(cannon.y)
 }
-
-
 // Call this function initially to set the size of the canvas
 updateCanvasSize();
 
@@ -38,9 +39,9 @@ function loop() {
 
 function logMouseCoordinates(event) {
     let rect = canvas.getBoundingClientRect(); // Get the position of the canvas
-    let navHeight = document.querySelector('nav').offsetHeight; // Get the height of the nav element
+    let navHeight = document.querySelector('nav').offsetHeight; // Get the height of the navigation
     mouseX = event.clientX - rect.left; // Adjust the x-coordinate
-    mouseY = canvas.height - (event.clientY - navHeight); // Adjust the y-coordinate
+    mouseY = canvas.height - (event.clientY - navHeight);
     console.log(`Mouse X: ${mouseX}, Mouse Y: ${mouseY}`); // Log mouse coordinates
 }
 

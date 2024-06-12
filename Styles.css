@@ -9,18 +9,19 @@ nav {
     margin-top: 70px;
     text-align: center;
     background-color: #707070;
-    padding-top: 30px;
-    padding-bottom: 30px;
+    padding-top: 40px;
+    padding-bottom: 40px;
     border-top: 8px solid black;
     border-bottom: 8px solid black;
 }
+
 
 nav a {
     padding: 20px;
     padding-left: 30px;
     padding-right: 30px;
 
-    font-size: 30px;
+    font-size: 1.4em;
     text-decoration: none;
     font-weight: bold;
     font-family: 'Aptos Black', sans-serif;
@@ -28,8 +29,8 @@ nav a {
     z-index: 1; /* Puts the text in front for the slider */
 
     border: 5px solid black;
-    margin-left: 60px;
-    margin-right: 60px;
+    margin-left: 20px;
+    margin-right: 20px;
     display: inline-block;
     background-color: #9EC259;
     border-radius: 20px;
