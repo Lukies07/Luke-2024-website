@@ -10,46 +10,55 @@ let cannon = {
     height: 100,
 };
 
-// Function to update the size of the canvas
-function updateCanvasSize() {
-    const nav = document.querySelector('nav');
-    const navHeight = nav.offsetHeight; // Get the actual height of the nav
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight - navHeight; // Subtract the nav height from the window's innerHeight
-    cannon.x = window.innerWidth/2 - cannon.width/2;
-    cannon.y = 0 + cannon.height;
-    console.log(cannon.y)
-}
-// Call this function initially to set the size of the canvas
-updateCanvasSize();
-
 let mouseX = undefined;
 let mouseY = undefined;
 
+// Function to update the size of the canvas
+function updateCanvasSize() {
+    const nav = document.querySelector('nav');
+    const navHeight = nav.offsetHeight;
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight - navHeight;
+    // Update the cannon position to the center of the canvas
+    cannon.x = window.innerWidth / 2 - cannon.width / 2;
+    cannon.y = window.innerHeight / 2;
+    console.log(cannon.y);
+}
+
+updateCanvasSize();// Call this function initially to set the size of the canvas
+
+function logMouseCoordinates(event) {
+    let rect = canvas.getBoundingClientRect();
+    let navHeight = document.querySelector('nav').offsetHeight;
+    mouseX = event.clientX - rect.left; // Assign the value to mouseX
+    mouseY = canvas.height - (event.clientY - navHeight);
+    console.log(`Mouse X: ${mouseX}, Mouse Y: ${mouseY}`);
+}
+
 function drawCannon() {
-    ctx.clearRect(0, 0, canvas.width, canvas.height); // Clear the canvas
-    ctx.fillStyle = 'blue';
-    ctx.fillRect(cannon.x, cannon.y, cannon.width, cannon.height);
+    // Calculate angle between cannon and mouse
+    let dx = mouseX - (cannon.x - cannon.width/2);
+    let dy = mouseY - cannon.y;
+    let angle = Math.atan2(dy, dx);
+
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    ctx.save(); // Save the current canvas state
+    ctx.translate(cannon.x + cannon.width / 2, cannon.y + cannon.height / 2);
+    ctx.rotate(angle); // Rotate by the calculated angle
+
+    // Draw the rotated cannon
+    ctx.fillStyle = 'blue'; 
+    ctx.fillRect(-cannon.width / 2, -cannon.height / 2, cannon.width, cannon.height);
+    ctx.restore(); // Restore the original canvas state
 }
 
 function loop() {
     drawCannon();
-    requestAnimationFrame(loop); // Use requestAnimationFrame for better performance
+    requestAnimationFrame(loop);
 }
 
-function logMouseCoordinates(event) {
-    let rect = canvas.getBoundingClientRect(); // Get the position of the canvas
-    let navHeight = document.querySelector('nav').offsetHeight; // Get the height of the navigation
-    mouseX = event.clientX - rect.left; // Adjust the x-coordinate
-    mouseY = canvas.height - (event.clientY - navHeight);
-    console.log(`Mouse X: ${mouseX}, Mouse Y: ${mouseY}`); // Log mouse coordinates
-}
-
-
-window.onload = updateCanvasSize;
 window.addEventListener('mousemove', logMouseCoordinates);
-window.addEventListener('resize', updateCanvasSize); // Update the size of the canvas when the window size changes
-
+window.addEventListener('resize', updateCanvasSize);
 loop();
 
-}
+};
