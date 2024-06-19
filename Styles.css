@@ -62,3 +62,8 @@ nav a:hover::after {
     top: 0;
     height: 100%;
 }
+
+canvas {
+    position: absolute;
+    top: 70px; /* Adjust this value to match the height of your nav bar */
+}

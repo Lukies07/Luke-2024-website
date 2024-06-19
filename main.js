@@ -1,60 +1,42 @@
-window.onload = function() {
-    const canvas = document.getElementById('Canvas');
-    const ctx = canvas.getContext('2d');
+const canvas = document.getElementById('Canvas');
+const ctx = canvas.getContext('2d');
+const nav = document.querySelector('nav');
+const navHeight = nav.offsetHeight;
 
-    let cannon = {
-        x: canvas.width/2,
-        y: canvas.height/2,
-        width: 25,
-        height: 100,
-    };
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight - navHeight;
 
-    let mouseX = 0;
-    let mouseY = 0;
-
-    // Function to update the size of the canvas
-    function updateCanvasSize() {
-        canvas.width = window.innerWidth; // Set canvas width to window width
-        canvas.height = window.innerHeight; // Set canvas height to window height
-    }
-
-    // Function to draw the cannon
-    function drawCannon() {
-        // Clear canvas
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-        // Draw cannon
-        ctx.save(); // Save the current drawing state
-        ctx.translate(cannon.x, cannon.y); // Translate origin to cannon's position
-        // Calculate angle towards mouse
-        let angle = Math.atan2(mouseY - cannon.y, mouseX - cannon.x);
-        ctx.rotate(angle); // Rotate cannon towards mouse
-        ctx.fillRect(-cannon.width / 2, -cannon.height / 2, cannon.width, cannon.height);
-        ctx.restore(); // Restore original drawing state
-    }
-
-    // Function to handle mouse movement
-    function handleMouseMove(event) {
-        mouseX = event.clientX;
-        mouseY = event.clientY;
-    }
-
-    // Event listener for mouse move
-    window.addEventListener('mousemove', handleMouseMove);
-
-    // Event listener for window resize
-    window.addEventListener('resize', function() {
-        updateCanvasSize();
-        // You might also want to redraw the cannon when the canvas size changes
-        drawCannon();
-    });
-
-    // Function to start the animation loop
-    function loop() {
-        drawCannon();
-        requestAnimationFrame(loop);
-    }
-
-    updateCanvasSize(); // Call this function initially to set the size of the canvas
-    loop(); // Start the animation loop
+let cannon = {
+    x: canvas.width / 2,
+    y: canvas.height / 2,
+    width: 25,
+    height: 100,
 };
+
+// Function to calculate angle between cannon and cursor
+function calculateAngle(event) {
+    let rect = canvas.getBoundingClientRect();
+    let x = event.clientX - rect.left - cannon.x;
+    let y = event.clientY - rect.top - cannon.y;
+    return Math.atan2(-x, y);
+}
+
+// Function to draw the cannon
+function drawCannon(angle) {
+    ctx.clearRect(0, 0, canvas.width, canvas.height); // Clear the canvas
+    ctx.save(); // Save the current state of the canvas
+    ctx.translate(cannon.x + cannon.width/2, cannon.y); // Move the origin to the cannon's location
+    ctx.rotate(angle); // Rotate the canvas
+
+    // Draw the cannon
+    ctx.fillStyle = 'black';
+    ctx.fillRect(-cannon.width/2, 0, cannon.width, cannon.height); // Adjusted line
+
+    ctx.restore(); // Restore the canvas state to before the transformations
+}
+
+// Event listener for mouse movement
+canvas.addEventListener('mousemove', function(event) {
+    let angle = calculateAngle(event);
+    drawCannon(angle);
+});
