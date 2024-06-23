@@ -1,7 +1,7 @@
-const canvas = document.getElementById('Canvas');
-const ctx = canvas.getContext('2d');
-const nav = document.querySelector('nav');
-const navHeight = nav.offsetHeight;
+let canvas = document.getElementById('Canvas');
+let ctx = canvas.getContext('2d');
+let nav = document.querySelector('nav');
+let navHeight = nav.offsetHeight;
 
 let cannon = {
     x: canvas.width / 2,
@@ -12,13 +12,13 @@ let cannon = {
 
 function resizeCanvas() {
     canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight - navHeight;
+    canvas.height = window.innerHeight;
     
     // Update cannon position to stay centered
     cannon.x = canvas.width / 2;
-    cannon.y = canvas.height;
-}
+    cannon.y = canvas.height - navHeight;
 
+}
 // Initial resize canvas
 resizeCanvas();
 

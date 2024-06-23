@@ -22,3 +22,34 @@ nav a:hover::after {
     top: 0;
     height: 100%;
 }
+
+
+
+How can i use the cursor coordiantes to make the cannon point to the cursor
+
+function calculateAngle(event) { 
+    let rect = canvas.getBoundingClientRect();
+    let x = event.clientX - rect.left - cannon.x;
+    let y = event.clientY - rect.top - cannon.y;
+    return Math.atan2(x, y);                                                       I changed it to (-x, y)
+}   
+
+// Function to draw the cannon
+function drawCannon(angle) {
+    ctx.clearRect(0, 0, canvas.width, canvas.height); // Clear the canvas
+    ctx.save(); // Save the current state of the canvas
+    ctx.translate(cannon.x, cannon.y); // Move the origin to the cannon's location
+
+    // Draw the cannon
+    ctx.rotate(angle); // Rotate the canvas
+    ctx.fillStyle = 'black';
+    ctx.fillRect(-cannon.width, 0, cannon.width, cannon.height);                    I changed this to ctx.fillRect(-cannon.width/2 , 0, cannon.width, cannon.height); 
+                                                                                    to make it point to the centre of the cannon
+    ctx.restore(); // Restore the canvas state to before the transformations
+}
+
+// Event listener for mouse movement
+canvas.addEventListener('mousemove', function(event) {
+    let angle = calculateAngle(event);
+    drawCannon(angle);
+});
