@@ -53,3 +53,7 @@ canvas.addEventListener('mousemove', function(event) {
     let angle = calculateAngle(event);
     drawCannon(angle);
 });
+
+made cannon img
+imported it over
+it went upside down
