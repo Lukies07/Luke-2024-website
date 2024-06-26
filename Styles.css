@@ -29,12 +29,12 @@ nav a {
     color: black;
     z-index: 1; /* Puts the text in front for the slider */
 
-    border: 5px solid black;
-    margin-left: 20px;
-    margin-right: 20px;
+    border: 0.7vh solid black;
+    margin-left: 1vw;
+    margin-right: 1vw;
     display: inline-block;
     background-color: #9EC259;
-    border-radius: 20px;
+    border-radius: 1vw;
 
     position: relative;
     overflow: hidden;
@@ -59,13 +59,18 @@ nav a:hover::after {
     height: 100%;
 }
 
+/* this is for keeping the nav a element green if the user is on the respective website */
+nav a.active {
+    background-color: #4f902e; /* Green background color */
+}
+
 canvas {
     position: absolute;
-    top: 70px; /* Adjust this value to match the height of your nav bar */
+    top: 0px; /* having this fixes a bug with the cannons pos */
 }
 
 
-/* box stuff: */
+/* box stuff styling and position */
 .box-container {
     display: flex;
     justify-content: space-between;

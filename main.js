@@ -10,13 +10,30 @@ let cannon = {
     height: 180,
 }
 
+//this function is for the nav a element to stay green if they are on the x webpage
+document.addEventListener("DOMContentLoaded", function() {
+    var links = document.querySelectorAll("nav a");
+    var currentPath = window.location.pathname;
+
+    //the following 7 lines were added by AI 
+    for (var i = 0; i < links.length; i++) {
+        var link = links[i];
+        var linkPath = link.getAttribute("href");
+
+        // Check if the currentPath matches the linkPath
+        if (currentPath === linkPath) {
+            link.classList.add("active");
+        }
+    }
+});
+
 function resizeCanvas() {
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
 
     // Update cannon position to stay centered
     cannon.x = canvas.width / 2;
-    cannon.y = canvas.height - navHeight + window.innerHeight*0.05;
+    cannon.y = canvas.height - navHeight + window.innerHeight*0.15;
 
     drawCannon(0); // Redraw cannon after resize
 }
