@@ -128,3 +128,31 @@ canvas {
     font-family: 'Aptos Black', sans-serif;
     color: black;
 }
+
+.centre_box {
+    margin: auto; /* Center horizontally */
+    margin-top: 10vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 50vh;
+    width: 40vw;
+    background-color: #8881B0;
+    border: 1vh solid black;
+    border-radius: 2vh;
+}
+
+.centre_box img {
+    max-width: 50%;
+    max-height: 50%;
+    object-fit: contain;
+}
+
+.centre_box p {
+    font-size: 1.3vw;
+    text-decoration: none;
+    font-weight: bold;
+    font-family: 'Aptos Black', sans-serif;
+    color: black;
+}
