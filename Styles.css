@@ -7,11 +7,11 @@ body {
 }
 
 nav {
-    margin-top: 8vh;
+    margin-top: 7vh;
     text-align: center;
     background-color: #707070;
-    padding-top: 5vh;
-    padding-bottom: 5vh;
+    padding-top: 4vh;
+    padding-bottom: 4vh;
     border-top: 1vh solid black;
     border-bottom: 1vh solid black;
 }
@@ -64,24 +64,67 @@ canvas {
     top: 70px; /* Adjust this value to match the height of your nav bar */
 }
 
-.Cannonneer_preview {
+
+/* box stuff: */
+.box-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.right_box {
     margin-top: 10vh;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     height: 50vh; 
     width: 40vw;    
-    background-color: aqua;
-    margin-left: auto; /* Push the div to the right */
+    background-color: #8881B0;
     margin-right: 2vw;
 
     border: 1vh solid black;
     border-radius: 2vh;
 }
 
+.right_box img {
+    max-width: 70%;
+    max-height: 60%;
+    object-fit: contain;
+}
 
-.Cannonneer_preview img {
+.right_box p {
+    font-size: 1.3vw;
+    text-decoration: none;
+    font-weight: bold;
+    font-family: 'Aptos Black', sans-serif;
+    color: black;
+}
+
+.left_box {
+    margin-top: 10vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 50vh; 
+    width: 40vw;    
+    background-color: #8881B0;
+    margin-left: 2vw;
+
+    border: 1vh solid black;
+    border-radius: 2vh;
+}
+
+.left_box img {
     max-width: 50%;
     max-height: 50%;
     object-fit: contain;
+}
+
+.left_box p {
+    font-size: 1.3vw;
+    text-decoration: none;
+    font-weight: bold;
+    font-family: 'Aptos Black', sans-serif;
+    color: black;
 }

@@ -8,7 +8,7 @@ let cannon = {
     y: canvas.height,
     width: 60,
     height: 180,
-};
+}
 
 function resizeCanvas() {
     canvas.width = window.innerWidth;
@@ -16,7 +16,7 @@ function resizeCanvas() {
 
     // Update cannon position to stay centered
     cannon.x = canvas.width / 2;
-    cannon.y = canvas.height - navHeight + window.innerHeight*0.075;
+    cannon.y = canvas.height - navHeight + window.innerHeight*0.05;
 
     drawCannon(0); // Redraw cannon after resize
 }
