@@ -3,29 +3,13 @@ let ctx = canvas.getContext('2d');
 let nav = document.querySelector('nav');
 let navHeight = nav.offsetHeight;
 
+//cannon variables:
 let cannon = {
     x: canvas.width / 2,
     y: canvas.height,
     width: 60,
     height: 180,
 }
-
-//this function is for the nav a element to stay green if they are on the x webpage
-document.addEventListener("DOMContentLoaded", function() {
-    var links = document.querySelectorAll("nav a");
-    var currentPath = window.location.pathname;
-
-    //the following 7 lines were added by AI 
-    for (var i = 0; i < links.length; i++) {
-        var link = links[i];
-        var linkPath = link.getAttribute("href");
-
-        // Check if the currentPath matches the linkPath
-        if (currentPath === linkPath) {
-            link.classList.add("active");
-        }
-    }
-});
 
 function resizeCanvas() {
     canvas.width = window.innerWidth;
@@ -59,8 +43,7 @@ function drawCannon(angle) {
     // Flip the canvas vertically
     ctx.scale(1, -1);
 
-    // Draw the cannon image
-    // Since the image is flipped, adjust the position to draw from the bottom
+    // Since the image is flipped, i adjusted the position to draw from the bottom
     ctx.drawImage(document.getElementById('cannonImage'), -cannon.width/2, -cannon.height + 30, cannon.width, cannon.height); //-cannon.height + 25 makes it look like the cannon is pivoting
 
     ctx.restore(); // Restore the canvas state to before the transformations

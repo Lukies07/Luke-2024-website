@@ -79,7 +79,7 @@ canvas {
 .right_box {
     margin-top: 10vh;
     display: flex;
-    flex-direction: column;
+    flex-direction: column; /* this orders the elements from top to bottom  */
     justify-content: center;
     align-items: center;
     height: 50vh; 
@@ -88,7 +88,7 @@ canvas {
     margin-right: 2vw;
 
     border: 1vh solid black;
-    border-radius: 2vh;
+    border-radius: 2vh; /* makes the edges round */
 }
 
 .right_box img {
@@ -105,6 +105,7 @@ canvas {
     color: black;
 }
 
+
 .left_box {
     margin-top: 10vh;
     display: flex;
@@ -117,7 +118,7 @@ canvas {
     margin-left: 2vw;
 
     border: 1vh solid black;
-    border-radius: 2vh;
+    border-radius: 2vh; /* makes the edges round */
 }
 
 .left_box img {
@@ -134,6 +135,7 @@ canvas {
     color: black;
 }
 
+/* the centre box is for webpages with only 1 main topic */
 .centre_box {
     margin: auto; /* Center horizontally */
     margin-top: 10vh;
@@ -145,7 +147,7 @@ canvas {
     width: 40vw;
     background-color: #8881B0;
     border: 1vh solid black;
-    border-radius: 2vh;
+    border-radius: 2vh /* makes the edges round */
 }
 
 .centre_box img {
